@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SmartCode Companion — Frontend</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Playground Card -->
+    <div class="card">
+      <header>
+        <h1>SmartCode Companion — Playground</h1>
+        <div class="small">Connects to your backend AI endpoint</div>
+      </header>
+      <div class="controls editor-buttons">
+        <button id="runBtn">▶ Run</button>
+        <button id="debugBtn">🐞 Debug</button>
+        <button id="commentBtn">💬 Comment Code</button>
+        <button id="analyzeBtn">🧠 Analyze</button>
+        <button id="voiceBtn">🎙 Voice → Comments</button>
+      </div>
+      <!-- Editor Section -->
+      
+      <section class="editor section-divider">
+        <label for="codeInput">Write your code:</label>
+        <div class="editor-container">
+          <div id="lineNumbers">1</div>
+          <textarea id="codeInput" placeholder="// Type or paste your code here..."></textarea>
+        </div>
+        
+      </section>
+      
+      <script>
+        const textarea = document.getElementById("codeInput");
+        const lineNumbers = document.getElementById("lineNumbers");
+      
+        textarea.addEventListener("input", () => {
+          const lines = textarea.value.split("\n").length;
+          lineNumbers.innerHTML = Array.from({ length: lines }, (_, i) => i + 1).join("<br>");
+        });
+      
+        textarea.addEventListener("scroll", () => {
+          lineNumbers.scrollTop = textarea.scrollTop;
+        });
+      </script>
+      
+
+      <!-- Skill & Doc Style -->
+      <section class="controls section-divider">
+        <div class="control-group">
+          <label for="skill">Skill Level:</label>
+          <select id="skill">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="docStyle">Documentation Style:</label>
+          <select id="docStyle">
+            <option value="javadoc">Javadoc</option>
+            <option value="pep8">PEP8</option>
+            <option value="google">Google Style</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Prompt Section -->
+
+      <!-- Language & Provider -->
+      <div class="form-row section-divider">
+        <div style="flex:1">
+          <label for="language">Language / Target</label>
+          <select id="language">
+            <option>Java</option>
+            <option>Python</option>
+            <option>JavaScript</option>
+            <option>HTML/CSS</option>
+            <option>React</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div style="flex:1">
+          
+        </div>
+      </div>
+
+      <!-- Generate & Clear -->
+      <div class="controls generate-buttons section-divider">
+        <button id="generateBtn">Generate</button>
+        <button id="clearBtn" class="secondary">Clear</button>
+      </div>
+
+      <!-- Hints and Endpoint -->
+      <div class="meta">Hints: be explicit about inputs, output format, and any constraints — the backend will forward these to the selected AI client.</div>
+      <div class="small endpoint">Endpoint used: POST /api/generate</div>
+    </div>
+
+    <!-- Output / Result Card -->
+    <aside class="card">
+      <div class="output-header">
+        <div>
+          <div class="meta">Result</div>
+          <div class="small" id="status">Idle</div>
+        </div>
+        <div class="controls">
+          <button id="copyBtn" class="secondary">Copy</button>
+          <button id="downloadBtn" class="secondary">Download</button>
+        </div>
+      </div>
+      <div id="output" class="output">No output yet — click Generate to send a request to the backend.</div>
+      <div class="footer">If your backend runs under a different path or port, update <code>ENDPOINT</code> in the script.</div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+  <!-- <script>
+    // Demo actions for Run, Debug, Analyze, Voice
+    document.getElementById("runBtn").addEventListener("click", () => {
+      const code = document.getElementById("codeInput").value;
+      document.getElementById("output").textContent =
+        "▶ Running code...\n\n" + (code || "// No code entered");
+    });
+
+    document.getElementById("debugBtn").addEventListener("click", () => {
+      document.getElementById("output").textContent =
+        "🐞 Debugging mode:\nStep-by-step analysis will appear here...";
+    });
+
+    document.getElementById("analyzeBtn").addEventListener("click", () => {
+      const skill = document.getElementById("skill").value;
+      document.getElementById("output").textContent =
+       " Analyzing code at ${skill} level...\nExplanation will appear here.;"
+    });
+
+    document.getElementById("voiceBtn").addEventListener("click", () => {
+      alert("🎙 Voice input simulated → Added as comments!");
+    });
+  </script> -->
+</body>
+</html>

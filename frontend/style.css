@@ -1,0 +1,199 @@
+:root {
+    --bg: #0f1724;
+    --card: #0b1220;
+    --muted: #94a3b8;
+    --accent: #60a5fa;
+    --glass: rgba(255,255,255,0.03);
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#071124 0%, #081727 100%);
+    color: #e6eef8;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#071124 0%, #081727 100%);
+    color: #e6eef8;
+    display: block; /* remove strict flex centering */
+    padding: 20px;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* left wider, right sidebar narrower */
+    gap: 24px;
+    width: 95vw;      /* broaden to 95% of viewport */
+    max-width: 100%;  /* no fixed limit */
+    margin: 0 auto;   /* keep slight centering */
+  }
+  
+  
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 6px 24px rgba(2,6,23,0.6);
+    border: 2px solid rgba(96,165,250,0.3); /* brighter border */
+  }
+  
+  header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(96,165,250,0.4);
+  }
+  
+  header h1 {
+    font-size: 18px;
+    margin: 0 0 4px 0;
+  }
+  
+  textarea {
+    width: 100%;
+    min-height: 160px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(96,165,250,0.4); /* visible */
+    background: var(--bg);
+    color: inherit;
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+  
+  select, input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(96,165,250,0.4); /* visible */
+    background: var(--bg);
+    color: inherit;
+    font-size: 14px;
+  }
+  
+  button {
+    background: var(--accent);
+    color: #05223a;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    background: #3b82f6;
+  }
+  
+  button.secondary {
+    background: transparent;
+    border: 2px solid rgba(96,165,250,0.4);
+    color: var(--muted);
+  }
+  
+  .controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  
+  .editor-buttons button {
+    flex: 1;
+  }
+  
+  .generate-buttons {
+    margin-top: 12px;
+  }
+  
+  .editor label {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  .output {
+    white-space: pre-wrap;
+    font-family: "Fira Code", monospace;
+    background: #0d1a2e;
+    padding: 12px;
+    border-radius: 8px;
+    min-height: 200px;
+    overflow: auto;
+    border: 2px solid rgba(96,165,250,0.4); /* visible */
+  }
+  
+  .output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(96,165,250,0.4);
+    margin-bottom: 8px;
+  }
+  
+  .section-divider {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed rgba(96,165,250,0.3); /* partitions visible */
+  }
+  
+  .meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  
+  .small {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  .footer {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .editor-container {
+    display: flex;
+    border: 1px solid #3c4a63;
+    border-radius: 8px;
+    background: #0e1729;
+    overflow: hidden;
+  }
+  
+  #lineNumbers {
+    padding: 10px;
+    text-align: right;
+    user-select: none;
+    background: #111d33;
+    color: #6b7a99;
+    border-right: 1px solid #3c4a63;
+    font-family: monospace;
+    line-height: 1.5;
+  }
+  
+  #codeInput {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: #e6eef8;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+    resize: none;
+    min-height: 300px;
+  }
